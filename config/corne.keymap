@@ -68,8 +68,8 @@
 // |     |  $  |  &  |  [   |   ]  |  #  |     |  °  |  ~  |  ¬  |  _  |  -  | SHIFT |    
 //                      |  ;  |   :  | SPACE/CTRL |   | ENT |     |  ALT   |
                         bindings = <
-   &kp GRAVE  &kp RPAR   &kp PRCNT  &kp ASTRK &kp LPAR    &kp RA(APOS)         &kp RA(MINUS)  &kp EQUAL     &kp UNDER         &kp LT   &kp RBRC   &kp BSPC
-   &kp TAB   &kp RA(Q)  &kp AT     &kp SQT   &kp BSLH    &kp RA(BSLH)         &kp AMPS       &kp PLUS      &kp EXCL          &kp GT  &kp RBKT   &kp DEL
+   &kp GRAVE  &kp RPAR   &kp PRCNT  &kp ASTRK &kp LPAR    &kp RA(APOS)         &kp RA(MINUS)  &kp EQUAL     &kp UNDER         &kp PERIOD   &kp RBRC   &kp BSPC
+   &kp TAB   &kp RA(Q)  &kp AT     &kp SQT   &kp BSLH    &kp RA(BSLH)         &kp AMPS       &kp PLUS      &kp EXCL          &kp LESS_THAN  &kp RBKT   &kp DEL
    &kp LBRC  &kp DLLR   &kp CARET  &kp DQT   &kp TILDE2  &kp HASH             &kp TILDE      &kp RA(RBKT)  &kp RA(GRAVE)     &kp QMARK  &kp FSLH   &kp LSHIFT
                    &kp LT  &kp GT &mt LCTRL SPACE                                  &kp RET &trans &kp LALT
                         >;
