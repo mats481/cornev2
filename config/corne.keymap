@@ -7,6 +7,15 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/led/led.h>
+#include <dt-bindings/zmk/rgb.h>
+
+#define DVO     0
+#define NAV     1
+#define NUM     2   
+#define SYM     3
+#define LOL     4
+
 
 / {
         keymap {
@@ -14,43 +23,101 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+// | ESC |  .  |  ,  |  Ñ  |  P  |  Y  |   |  F  |  G   |  C  |  H  |  L  | BKSP |
+// | TAB |  A  |  O  |  E  |  U  |  I  |   |  D  |  R   |  T  |  N  |  S  | SUP  |
+// | GUI |  '  |  Q  |  J  |  K  |  X  |   |  B  |  M   |  W  |  V  |  Z  | ´ ALT  |
+//                    | NUM | SPACE/NAV | CTRL |   | ENT | SYM  | SHIFT/LOCK |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-                };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
 
-                raise_layer {
+   &kp ESC   &kp DOT    &kp COMMA  &kp SEMI  &kp P &kp Y     &kp F  &kp G   &kp C   &kp H    &kp L    &kp BSPC
+   &kp TAB   &kp A      &kp O      &kp E     &kp U &kp I     &kp D  &kp R   &kp T   &kp N    &kp S    &kp DEL
+   &kp LGUI  &kp MINUS  &kp Q      &kp J     &kp K &kp X     &kp B  &kp M   &kp W   &kp V    &kp Z    &mt LALT LBKT
+                  &mo NUM  &lt NAV SPACE  &kp LCTRL              &kp RET  &mo SYM  &kp LSHIFT
+                        >;
+                };
+                nav_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// | F1  |  F2 |  F3    |  F4   |  F5     |  F6  |   |  COPY  |  CUT     |  UP    |  PASTE  |  IMPPAGE  | BKSP |
+// | TAB |     |  CTRL  |  ALT  |  SHIFT  |      |   |  CTRL  |  LEFT    |  DOWN  |  RIGHT  |           | SUP  |
+// | F7  |  F8 |  F9    |  F10  |  F11    |  F12 |   |  PAUS  |  ANTER   |  PROX  |   MUTE  |  -SON     | +SON  |
+//                      | GUI   |     | SPACE/CTRL |   | ENT |           |  LOL   |
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+   &kp F1   &kp F2    &kp F3     &kp F4    &kp F5     &kp F6        &kp LC(C)  &kp LC(X)   &kp UP       &kp LC(V)   &kp PSCRN    &kp BSPC
+   &kp TAB  &none     &kp LCTRL  &kp LALT  &kp LSHIFT &none         &kp LCTRL  &kp LEFT    &kp DOWN     &kp RIGHT   &none        &kp DEL
+   &kp F7   &kp F8    &kp F9     &kp F10   &kp F11    &kp F12       &kp C_PP   &kp C_PREV  &kp C_NEXT   &kp C_MUTE  &kp C_VOL_DN &kp C_VOL_UP
+                  &kp LGUI  &trans  &mt LCTRL SPACE                         &kp RET &tog LOL &trans
+                        >;
+                };
+                num_layer {
+// -----------------------------------------------------------------------------------------
+// |  +BRI |  =  |  %  |  (   |   )  |  :  |     |  =  |  7  |  8  |  9  |  *  |  BKSP |
+// |  -BRI |  [  |  ]  |  {   |   }  |  ;  |     |  /  |  4  |  5  |  6  |  +  |  SUP  |
+// | BTRST |  B1 |  B2 |  B3  |  B4  |  B5 |     |  ,  |  1  |  2  |  3  |  -  | SHIFT |
+//                      |    |     | SPACE/CTRL |   | ENT |   .  |  0   |
+                        bindings = <
+   &kp C_BRI_UP  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_SPI      &kp RPAR  &kp N7  &kp N8  &kp N9  &kp RBRC   &kp BSPC
+   &kp C_BRI_DN  &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_SPD      &kp AMPS  &kp N4  &kp N5  &kp N6  &kp RBKT   &kp DEL
+   &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3    &bt BT_SEL 4    &rgb_ug RGB_TOG      &kp COMMA &kp N1  &kp N2  &kp N3  &kp FSLH   &kp LSHIFT
+                       &trans &bt BT_CLR &mt LCTRL SPACE                                                      &kp RET &kp DOT &kp N0
+                        >;
+                };    
+                sym_layer {
+// ----------------------------------------------------------------------------------------
+// |  |  |  =  |  %  |  (   |   )  |  ^  |     |  \  |  ¿  |  ?  |  <  |  *  |  BKSP |
+// | TAB |  @  |  "  |  {   |   }  |  `  |     |  /  |  ¡  |  !  |  >  |  +  |  SUP  |
+// |     |  $  |  &  |  [   |   ]  |  #  |     |  °  |  ~  |  ¬  |  _  |  -  | SHIFT |    
+//                      |  ;  |   :  | SPACE/CTRL |   | ENT |     |  ALT   |
+                        bindings = <
+   &kp GRAVE  &kp RPAR   &kp PRCNT  &kp ASTRK &kp LPAR    &kp RA(APOS)         &kp RA(MINUS)  &kp EQUAL     &kp UNDER         &kp NUBS   &kp RBRC   &kp BSPC
+   &kp TAB   &kp RA(Q)  &kp AT     &kp SQT   &kp BSLH    &kp RA(BSLH)         &kp AMPS       &kp PLUS      &kp EXCL          &kp PIPE2  &kp RBKT   &kp DEL
+   &kp LBRC  &kp DLLR   &kp CARET  &kp DQT   &kp TILDE2  &kp HASH             &kp TILDE      &kp RA(RBKT)  &kp RA(GRAVE)     &kp QMARK  &kp FSLH   &kp LSHIFT
+                   &kp LT  &kp GT &mt LCTRL SPACE                                  &kp RET &trans &kp LALT
+                        >;
+                };
+                lol_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC  |  1  | 2   |  3   |   4  |  5  |     |  F2 |  F3 |  F4 |  F5 |     |  BKSP |
+// |  TAB  |  Q  |  W  |  E   |   R  |  6  |     |  C  |  V  |  O  |  Y  |  S  |  SUP  |
+// |   G   |  P  |  B  |  D   |   F  |  M  |     |  L  |  H  |  Z  |  X  |     | SHIFT |
+//                      |  T  |   ENT  | SPACE |   | CTRL |  DVORAK   |  SHIFT   |
+                        bindings = <
+   &kp ESC   &kp N1  &kp N2  &kp N3  &kp N4  &kp N5        &kp F2    &kp F3  &kp F4   &kp F5  &trans  &kp BSPC
+   &kp TAB   &kp Q   &kp W   &kp E   &kp R   &kp N6        &kp C     &kp V   &kp O    &kp Y   &kp S   &kp DEL
+   &kp G     &kp P   &kp B   &kp D   &kp F   &kp M         &kp L     &kp H   &kp Z    &kp X   &trans  &kp LSHIFT
+                  &kp T  &kp RET &kp SPACE                    &kp LCTRL &tog LOL &kp LSHIFT
                         >;
                 };
         };
+};
+
+&spi1 {
+	compatible = "nordic,nrf-spim";
+	/* Cannot be used together with i2c0. */
+	status = "okay";
+	mosi-pin = <6>;
+	// Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
+	sck-pin = <5>;
+	miso-pin = <7>;
+
+	led_strip: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+		label = "SK6812mini";
+
+		/* SPI */
+		reg = <0>; /* ignored, but necessary for SPI bindings */
+		spi-max-frequency = <4000000>;
+
+		/* WS2812 */
+		chain-length = <27>; /* There are per-key RGB, but the first 6 are underglow */
+		spi-one-frame = <0x70>;
+		spi-zero-frame = <0x40>;
+
+		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+	};
+};
+
+/ {
+	chosen {
+		zmk,underglow = &led_strip;
+	};
 };
