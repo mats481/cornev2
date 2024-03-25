@@ -36,6 +36,16 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        caps_word {
+            bindings = <&caps_word>;
+            key-positions = <17 18>;
+            layers = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -47,10 +57,10 @@
             //                    | NUM | SPACE/NAV | CTRL |   | ENT | SYM  | SHIFT/LOCK |
 
             bindings = <
-&kp ESC   &kp DOT    &kp COMMA  &kp SEMI                                &kp P        &kp Y        &kp F    &kp G                                   &kp C       &kp H  &kp L  &kp BSPC
-&kp TAB   &kp A      &kp O      &kp E                                   &kp U        &kp I        &kp D    &kp R                                   &kp T       &kp N  &kp S  &kp DEL
-&kp LGUI  &kp MINUS  &kp Q      &kp J                                   &kp K        &kp X        &kp B    &kp M                                   &kp W       &kp V  &kp Z  &mt LALT LBKT
-                                &rgb_mo 2 RGB_COLOR_HSB_VAL(112,73,44)  &lt 1 SPACE  &kp LCTRL    &kp RET  &rgb_mo 3 RGB_COLOR_HSB_VAL(247,96,42)  &kp LSHIFT
+&kp ESC   &kp DOT    &kp COMMA  &kp SEMI                                &kp P        &kp Y        &kp F    &kp G                                    &kp C       &kp H  &kp L  &kp BSPC
+&kp TAB   &kp A      &kp O      &kp E                                   &kp U        &kp I        &kp D    &kp R                                    &kp T       &kp N  &kp S  &kp DEL
+&kp LGUI  &kp MINUS  &kp Q      &kp J                                   &kp K        &kp X        &kp B    &kp M                                    &kp W       &kp V  &kp Z  &mt LALT LBKT
+                                &rgb_mo 2 RGB_COLOR_HSB_VAL(112,73,44)  &lt 1 SPACE  &kp LCTRL    &kp RET  &rgb_mo 3 RGB_COLOR_HSB_VAL(247,100,50)  &kp LSHIFT
             >;
         };
 
@@ -77,10 +87,10 @@
             //                      |    |     | SPACE/CTRL |   | ENT |   .  |  0   |
 
             bindings = <
-&kp C_BRI_UP  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI    &kp RPAR   &kp N7   &kp N8  &kp N9  &kp RBRC  &kp BSPC
-&kp C_BRI_DN  &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD    &kp AMPS   &kp N4   &kp N5  &kp N6  &kp RBKT  &kp DEL
-&bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4     &rgb_ug RGB_TOG    &kp COMMA  &kp N1   &kp N2  &kp N3  &kp FSLH  &kp LSHIFT
-                                                &trans           &bt BT_CLR       &mt LCTRL SPACE    &kp RET    &kp DOT  &kp N0
+&kp C_BRI_UP  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &kp UP_ARROW    &rgb_ug RGB_BRI  &rgb_ug RGB_SPI    &kp RPAR   &kp N7   &kp N8  &kp N9  &kp RBRC  &kp BSPC
+&kp C_BRI_DN  &bt BT_CLR       &kp LEFT         &kp DOWN_ARROW  &kp RIGHT        &rgb_ug RGB_SPD    &kp AMPS   &kp N4   &kp N5  &kp N6  &kp RBKT  &kp DEL
+&bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3    &bt BT_SEL 4     &rgb_ug RGB_TOG    &kp COMMA  &kp N1   &kp N2  &kp N3  &kp FSLH  &kp LSHIFT
+                                                &trans          &to 5            &mt LCTRL SPACE    &kp RET    &kp DOT  &kp N0
             >;
         };
 
@@ -111,6 +121,15 @@
 &kp TAB  &kp Q   &kp W   &kp E   &kp R    &kp N6       &kp C      &kp V   &kp O       &kp Y   &kp S   &kp DEL
 &kp G    &kp P   &kp B   &kp D   &kp F    &kp M        &kp L      &kp H   &kp Z       &kp X   &trans  &kp LSHIFT
                          &kp T   &kp RET  &kp SPACE    &kp LCTRL  &tog 4  &kp LSHIFT
+            >;
+        };
+
+        setup_nums {
+            bindings = <
+&kp C_BRI_UP  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI    &kp RPAR   &kp N7   &kp N8  &kp N9  &kp RBRC  &kp BSPC
+&kp C_BRI_DN  &bt BT_CLR       &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD    &kp AMPS   &kp N4   &kp N5  &kp N6  &kp RBKT  &kp DEL
+&bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4     &rgb_ug RGB_TOG    &kp COMMA  &kp N1   &kp N2  &kp N3  &kp FSLH  &tog 5
+                                                &trans           &trans           &mt LCTRL SPACE    &kp RET    &kp DOT  &kp N0
             >;
         };
     };
