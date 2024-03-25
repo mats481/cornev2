@@ -44,10 +44,10 @@
             //                    | NUM | SPACE/NAV | CTRL |   | ENT | SYM  | SHIFT/LOCK |
 
             bindings = <
-&kp ESC   &kp DOT    &kp COMMA  &kp SEMI                                   &kp P          &kp Y        &kp F    &kp G                                      &kp C       &kp H  &kp L  &kp BSPC
-&kp TAB   &kp A      &kp O      &kp E                                      &kp U          &kp I        &kp D    &kp R                                      &kp T       &kp N  &kp S  &kp DEL
-&kp LGUI  &kp MINUS  &kp Q      &kp J                                      &kp K          &kp X        &kp B    &kp M                                      &kp W       &kp V  &kp Z  &mt LALT LBKT
-                                &rgblayer RGB_COLOR_HSB_VAL(117,100,41) 2  &lt NAV SPACE  &kp LCTRL    &kp RET  &rgblayer RGB_COLOR_HSB_VAL(247,100,40) 3  &kp LSHIFT
+&kp ESC   &kp DOT    &kp COMMA  &kp SEMI                                   &kp P        &kp Y        &kp F    &kp G                                      &kp C       &kp H  &kp L  &kp BSPC
+&kp TAB   &kp A      &kp O      &kp E                                      &kp U        &kp I        &kp D    &kp R                                      &kp T       &kp N  &kp S  &kp DEL
+&kp LGUI  &kp MINUS  &kp Q      &kp J                                      &kp K        &kp X        &kp B    &kp M                                      &kp W       &kp V  &kp Z  &mt LALT LBKT
+                                &rgblayer RGB_COLOR_HSB_VAL(117,100,41) 5  &lt 1 SPACE  &kp LCTRL    &kp RET  &rgblayer RGB_COLOR_HSB_VAL(247,100,40) 3  &kp LSHIFT
             >;
         };
 
@@ -62,7 +62,7 @@
 &kp F1   &kp F2  &kp F3     &kp F4    &kp F5      &kp F6             &kp LC(C)  &kp LC(X)   &kp UP      &kp LC(V)   &kp PSCRN     &kp BSPC
 &kp TAB  &none   &kp LCTRL  &kp LALT  &kp LSHIFT  &none              &kp LCTRL  &kp LEFT    &kp DOWN    &kp RIGHT   &none         &kp DEL
 &kp F7   &kp F8  &kp F9     &kp F10   &kp F11     &kp F12            &kp C_PP   &kp C_PREV  &kp C_NEXT  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP
-                            &kp LGUI  &trans      &mt LCTRL SPACE    &kp RET    &tog LOL    &trans
+                            &kp LGUI  &trans      &mt LCTRL SPACE    &kp RET    &tog 4      &trans
             >;
         };
 
@@ -104,10 +104,19 @@
             //                      |  T  |   ENT  | SPACE |   | CTRL |  DVORAK   |  SHIFT   |
 
             bindings = <
-&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4   &kp N5       &kp F2     &kp F3    &kp F4      &kp F5  &trans  &kp BSPC
-&kp TAB  &kp Q   &kp W   &kp E   &kp R    &kp N6       &kp C      &kp V     &kp O       &kp Y   &kp S   &kp DEL
-&kp G    &kp P   &kp B   &kp D   &kp F    &kp M        &kp L      &kp H     &kp Z       &kp X   &trans  &kp LSHIFT
-                         &kp T   &kp RET  &kp SPACE    &kp LCTRL  &tog LOL  &kp LSHIFT
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4   &kp N5       &kp F2     &kp F3  &kp F4      &kp F5  &trans  &kp BSPC
+&kp TAB  &kp Q   &kp W   &kp E   &kp R    &kp N6       &kp C      &kp V   &kp O       &kp Y   &kp S   &kp DEL
+&kp G    &kp P   &kp B   &kp D   &kp F    &kp M        &kp L      &kp H   &kp Z       &kp X   &trans  &kp LSHIFT
+                         &kp T   &kp RET  &kp SPACE    &kp LCTRL  &tog 4  &kp LSHIFT
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+&kp C_BRI_UP  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI    &kp RPAR   &kp N7   &kp N8  &kp N9  &kp RBRC  &kp BSPC
+&kp C_BRI_DN  &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD    &kp AMPS   &kp N4   &kp N5  &kp N6  &kp RBKT  &kp DEL
+&bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4     &rgb_ug RGB_TOG    &kp COMMA  &kp N1   &kp N2  &kp N3  &kp FSLH  &kp LSHIFT
+                                                &trans           &bt BT_CLR       &mt LCTRL SPACE    &kp RET    &kp DOT  &kp N0
             >;
         };
     };
