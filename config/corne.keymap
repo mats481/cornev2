@@ -18,7 +18,7 @@
 
 / {
     macros {
-        rgblayer: rgblayer {
+        rgblayer: rgb_layer {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
             bindings =
@@ -31,7 +31,7 @@
                 <&macro_tap>,
                 <&rgb_ug RGB_TOG>;
 
-            label = "RGBLAYER";
+            label = "MOMENTARY_LAYER_WITH_RGB_SELECTION";
         };
     };
 
