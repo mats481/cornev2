@@ -19,14 +19,18 @@
 / {
     macros {
         rgb_mo: rgb_mo {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
             bindings =
-               <&macro_press &mo 2>
-                , <&macro_tap &rgb_ug RGB_COLOR_HSB(128,100,100)>
-                , <&macro_pause_for_release>
-                , <&macro_release &mo 2>
-                , <&macro_tap &rgb_ug RGB_COLOR_HSB(300,100,50)>
+                <&macro_press>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&macro_param_2to2 &rgb_ug RGB_COLOR_HSB_CMD MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&rgb_ug RGB_COLOR_HSB(0,0,0)>;
 
             label = "RGB_MO";
         };
@@ -43,10 +47,10 @@
             //                    | NUM | SPACE/NAV | CTRL |   | ENT | SYM  | SHIFT/LOCK |
 
             bindings = <
-&kp ESC   &kp DOT    &kp COMMA  &kp SEMI  &kp P        &kp Y        &kp F    &kp G    &kp C       &kp H  &kp L  &kp BSPC
-&kp TAB   &kp A      &kp O      &kp E     &kp U        &kp I        &kp D    &kp R    &kp T       &kp N  &kp S  &kp DEL
-&kp LGUI  &kp MINUS  &kp Q      &kp J     &kp K        &kp X        &kp B    &kp M    &kp W       &kp V  &kp Z  &mt LALT LBKT
-                                &rgb_mo   &lt 1 SPACE  &kp LCTRL    &kp RET  &rgb_mo  &kp LSHIFT
+&kp ESC   &kp DOT    &kp COMMA  &kp SEMI                                &kp P        &kp Y        &kp F    &kp G                                   &kp C       &kp H  &kp L  &kp BSPC
+&kp TAB   &kp A      &kp O      &kp E                                   &kp U        &kp I        &kp D    &kp R                                   &kp T       &kp N  &kp S  &kp DEL
+&kp LGUI  &kp MINUS  &kp Q      &kp J                                   &kp K        &kp X        &kp B    &kp M                                   &kp W       &kp V  &kp Z  &mt LALT LBKT
+                                &rgb_mo 2 RGB_COLOR_HSB_VAL(112,73,44)  &lt 1 SPACE  &kp LCTRL    &kp RET  &rgb_mo 3 RGB_COLOR_HSB_VAL(247,96,42)  &kp LSHIFT
             >;
         };
 
