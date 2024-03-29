@@ -1,13 +1,11 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
-    - name: tokazio
-      url-base: https://github.com/tokazio
+      url-base: https://github.com/esyo-net
   projects:
     - name: zmk
-      remote: tokazio
-      revision: b002b25
+      remote: zmkfirmware
+      revision: main
       import: app/west.yml
   self:
     path: config
