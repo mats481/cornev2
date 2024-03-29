@@ -78,7 +78,7 @@
         };
 
         layer5 {
-            bindings = <&rgb_toggle 5 RGB_COLOR_HSB(0,100,40)>;
+            bindings = <&rgb_toggle 5 RGB_COLOR_HSB_VAL(0,100,40)>;
             key-positions = <12 23>;
         };
 
